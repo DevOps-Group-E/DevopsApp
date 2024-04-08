@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# kill instances
+# Kill running Node.js instances
 killall node
-# Install node
+# Install Node.js and npm
 sudo apt update && sudo apt install nodejs npm
-# Install truffle
-sudo npm install truffle
-# change directory into folder where application is downloaded
+# Install Truffle
+sudo npm install -g truffle
+# Change directory to the folder where the application is downloaded
 cd DevopsApp/
 # Install application dependencies
 npm install
+# Set private key and server certificate
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
-# Start the application with the process name example app using pm2
+# Start the application named 'app' using pm2
 npm start
-
