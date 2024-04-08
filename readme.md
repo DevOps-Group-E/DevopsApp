@@ -1,4 +1,4 @@
-# DevOps Example Project
+# DevOps Final Project
 
 # Project Dependencies
 1. Node.js
@@ -16,4 +16,4 @@
 ***
 
 # DevopsApp
-This is our DevOps Group Project.
+This is our Final DevOps Group-E Project.
