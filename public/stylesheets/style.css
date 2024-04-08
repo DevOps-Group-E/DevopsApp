@@ -1,8 +1,10 @@
+/* Setting padding and font for the entire body */
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 50px; /* 50 pixels of padding around the content */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; /* Font settings for the body text */
 }
 
+/* Styling hyperlinks */
 a {
-  color: #00B7FF;
+  color: #00B7FF; /* Setting hyperlink color to a shade of blue */
 }

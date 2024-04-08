@@ -1,14 +1,19 @@
+# Version of the CircleCI configuration file
 version: 2.1
 
+# Define workflows
 workflows:
   version: 2
   build:
+    # Define jobs for the build workflow
     jobs:
+      # Build job
       - build:
           filters:
             branches:
               only:
                 - main
+      # Deploy job
       - deploy:
           filters:
             branches:
@@ -17,29 +22,44 @@ workflows:
           requires:
             - build
 
+# Define jobs
 jobs:
+  # Build job
   build:
+    # Set working directory for the job
     working_directory: ~/DevopsApp
+    # Specify Docker image for the job
     docker:
       - image: circleci/node:10.16.3
+    # Define steps for the job
     steps:
+      # Checkout the code from the repository
       - checkout
+      # Update npm to version 5
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@5'
+      # Restore npm dependencies cache
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
+      # Install npm dependencies
       - run:
           name: install-npm-wee
           command: npm install
+      # Save npm dependencies cache
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+
+  # Deploy job
   deploy:
+    # Specify Docker image for the job
     docker:
       - image: circleci/node:10.16.3
+    # Define steps for the job
     steps:
+      # Deploy the application
       - run:
           name: deploy-application
           command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "export SERVER=\"$SERVER\"; export PRIVATE_KEY=\"$PRIVATE_KEY\"; rm -rf DevopsApp/; git clone git@github.com:DevOps-Group-E/DevopsApp.git; source DevopsApp/deploy.sh"
