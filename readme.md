@@ -1,4 +1,4 @@
-# DevOps Final Project
+# Final DevOps Group Project
 
 # Project Dependencies
 1. Node.js
