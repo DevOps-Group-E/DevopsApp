@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Kill running Node.js instances
-killall node
-# Install Node.js and npm
 sudo apt update && sudo apt install nodejs npm
 # Install Truffle
-sudo npm install -g truffle
+sudo npm install -g pm2
+
+pm2 stop DevopsApp
 # Change directory to the folder where the application is downloaded
 cd DevopsApp/
 # Install application dependencies
