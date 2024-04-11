@@ -13,4 +13,4 @@ npm install
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 # Start the application named 'app' using pm2
-npm start
+pm2 start ./bin/www --name DevopsApp
